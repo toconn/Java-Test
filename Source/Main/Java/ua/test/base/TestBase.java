@@ -304,6 +304,13 @@ public class TestBase {
 		System.out.print (text);
 	}
 	
+	public static void printSectionHeader (String headerText) {
+		
+		print ();
+		print ("************  " + headerText + "  ************");
+		print ();
+	}
+	
 	public static void printSorted (String text1, Collection <String> texts) {
 		
 		print (text1, TestStringUtils.join (TestCollectionUtils.asSortedList (texts), ", "));

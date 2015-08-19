@@ -19,6 +19,7 @@ public class TestDateConst {
 	
 	public static final String				DATE_FORMAT_UA_DATE					= "yyyy-MM-dd";
 	public static final String				DATE_FORMAT_UA_DATETIME				= "yyyy-MM-dd HH:mm:ss";
+	public static final String				DATE_FORMAT_UA_DATETIME_ZONE		= "yyyy-MM-dd HH:mm:ss z";
 	public static final String				DATE_FORMAT_UA_DATETIME_AMPM		= "yyyy-MM-dd h:mm:ss a";
 	public static final String				DATE_FORMAT_UA_TIME					= "HH:mm:ss";
 	
@@ -51,6 +52,7 @@ public class TestDateConst {
 	public static final DateTimeFormatter	DATE2_FORMATTER_UA_DATE				= DateTimeFormatter.ofPattern (DATE_FORMAT_UA_DATE);
 	public static final DateTimeFormatter	DATE2_FORMATTER_UA_TIME				= DateTimeFormatter.ofPattern (DATE_FORMAT_UA_TIME);
 	public static final DateTimeFormatter	DATE2_FORMATTER_UA_DATETIME			= DateTimeFormatter.ofPattern (DATE_FORMAT_UA_DATETIME);
+	public static final DateTimeFormatter	DATE2_FORMATTER_UA_DATETIME_ZONE	= DateTimeFormatter.ofPattern (DATE_FORMAT_UA_DATETIME_ZONE);
 	public static final DateTimeFormatter	DATE2_FORMATTER_UA_TIMESTAMP_AMPM	= DateTimeFormatter.ofPattern (DATE_FORMAT_UA_DATETIME_AMPM);
 	
 	public static final DateTimeFormatter	DATE2_FORMATTER_RFC822				= DateTimeFormatter.ofPattern (DATE_FORMAT_RFC822);

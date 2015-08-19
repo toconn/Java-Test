@@ -158,14 +158,71 @@ public class TestCollectionUtils {
 	    }
 	}
 
-	public static boolean isEmpty (Collection <?> collection) {
+	/**
+	 * Tests to see if an array is empty (has no elements or is null).
+	 * Null safe.
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static <T> boolean isEmpty (T[] array) {
 		
-		return collection == null || collection.isEmpty ();
+		if (array == null || array.length == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
-	public static boolean isNotEmpty (Collection <?> collection) {
+	/**
+	 * Tests to see if a collection is empty (has no elements or is null).
+	 * Null safe.
+	 * 
+	 * @param collection
+	 * @return
+	 */
+	public static <T> boolean isEmpty (Collection <T> collection) {
+		
+		if (collection == null || collection.size () == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public static boolean isEmpty (Map <?,?> map) {
+		
+		return map == null || map.isEmpty ();
+	}
+
+
+	/**
+	 * Null safe test to see if an array is not empty (has at least one element).
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static <T> boolean isNotEmpty (T[] array) {
+		
+		return ! isEmpty (array);
+	}
+
+	/**
+	 * Null safe test to see if a collection is not empty (has at least one element).
+	 * 
+	 * @param collection
+	 * @return
+	 */
+	public static <T> boolean isNotEmpty (Collection <T> collection) {
 		
 		return ! isEmpty (collection);
+	}
+	
+	public static boolean isNotEmpty (Map <?,?> map) {
+		
+		return ! isEmpty (map);
 	}
 	
 
