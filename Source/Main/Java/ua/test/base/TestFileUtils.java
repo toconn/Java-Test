@@ -45,7 +45,9 @@ public class TestFileUtils {
 		// Declarations:
 		// //////////////////////////////////////////////////////////////////////////
 
+		FileInputStream sourceInputStream	= null;
 		FileChannel sourceFileChannel		= null;
+		FileOutputStream destinationOutputStream	= null;
 		FileChannel destinationFileChannel	= null;
 
 		
@@ -54,14 +56,15 @@ public class TestFileUtils {
 		// //////////////////////////////////////////////////////////////////////////
 
 		if (! destinationFile.exists ()) {
-
 			destinationFile.createNewFile ();
 		}
 
 		try {
 
-			sourceFileChannel = new FileInputStream (sourceFile).getChannel ();
-			destinationFileChannel = new FileOutputStream (destinationFile).getChannel ();
+			sourceInputStream = new FileInputStream (sourceFile);
+			sourceFileChannel = sourceInputStream.getChannel();
+			destinationOutputStream = new FileOutputStream (destinationFile);
+			destinationFileChannel = destinationOutputStream.getChannel();
 			destinationFileChannel.transferFrom (sourceFileChannel, 0, sourceFileChannel.size ());
 
 			destinationFile.setLastModified (sourceFile.lastModified ());
@@ -69,15 +72,22 @@ public class TestFileUtils {
 		finally {
 
 			if (sourceFileChannel != null) {
-
 				sourceFileChannel.close ();
 			}
 
-			if (destinationFileChannel != null) {
+			if (sourceInputStream != null) {
+				sourceInputStream.close ();
+			}
 
+			if (destinationFileChannel != null) {
 				destinationFileChannel.close ();
 			}
+
+			if (destinationOutputStream != null) {
+				destinationOutputStream.close ();
+			}
 		}
+
 	}
 	
 	
