@@ -382,7 +382,7 @@ public class TestDate2Utils {
 	 */
 	public static String toIsoDateString (LocalDate date) {
 
-		return date.format (TestDateConst.DATE2_FORMATTER_ISO_DATE);
+		return date.format (DATE2_FORMATTER_ISO_DATE);
 	}
 	
 	
@@ -394,7 +394,7 @@ public class TestDate2Utils {
 	 */
 	public static String toIsoTimestampString (LocalDate date) {
 
-		return date.format (TestDateConst.DATE2_FORMATTER_ISO_TIMESTAMP);
+		return date.format (DATE2_FORMATTER_ISO_TIMESTAMP);
 	}
 
 	/**
@@ -405,7 +405,7 @@ public class TestDate2Utils {
 	 */
 	public static String toIsoTimeString (LocalDate date) {
 
-		return date.format (TestDateConst.DATE2_FORMATTER_ISO_TIME);
+		return date.format (DATE2_FORMATTER_ISO_TIME);
 	}
 	
 	/**
@@ -557,7 +557,7 @@ public class TestDate2Utils {
 	 */
 	public static String toTimestampAmPmString (LocalDateTime date) {
 		
-		return toString (date, TestDateConst.DATE2_FORMATTER_UA_TIMESTAMP_AMPM);
+		return toString (date, DATE2_FORMATTER_UA_TIMESTAMP_AMPM);
 	}
 
 	/**
@@ -568,7 +568,7 @@ public class TestDate2Utils {
 	 */
 	public static String toTimestampString (LocalDate date) {
 		
-		return toString (date, TestDateConst.DATE2_FORMATTER_UA_DATETIME);
+		return toString (date, DATE2_FORMATTER_UA_DATETIME);
 	}
 	
 	/**
@@ -579,7 +579,7 @@ public class TestDate2Utils {
 	 */
 	public static String toTimestampString (LocalTime date) {
 		
-		return toString (date, TestDateConst.DATE2_FORMATTER_UA_TIME);
+		return toString (date, DATE2_FORMATTER_UA_TIME);
 	}
 	
 	/**
@@ -590,7 +590,7 @@ public class TestDate2Utils {
 	 */
 	public static String toTimestampString (LocalDateTime date) {
 		
-		return toString (date, TestDateConst.DATE2_FORMATTER_UA_DATETIME);
+		return toString (date, DATE2_FORMATTER_UA_DATETIME);
 	}
 	
 	/**
@@ -601,26 +601,26 @@ public class TestDate2Utils {
 	 */
 	public static String toTimeString (LocalDateTime date) {
 		
-		return toString (date, TestDateConst.DATE_FORMAT_UA_TIME);
+		return toString (date, DATE_FORMAT_UA_TIME);
 	}
 	
 	public static String toUaDateString (LocalDateTime date) {
 		
-		return toString (date, TestDateConst.DATE_FORMAT_UA_DATE);		
+		return toString (date, DATE_FORMAT_UA_DATE);		
 	}
 
 	public static String toUaTimestampString (LocalDateTime date) {
 		
-		return toString (date, TestDateConst.DATE_FORMAT_UA_DATETIME);		
+		return toString (date, DATE_FORMAT_UA_DATETIME);		
 	}
 
 	public static String toUaTimestampAmPmString (LocalDateTime date) {
 		
-		return toString (date, TestDateConst.DATE_FORMAT_UA_DATETIME_AMPM);		
+		return toString (date, DATE_FORMAT_UA_DATETIME_AMPM);		
 	}
 
 	public static String toUaTimeString (LocalDateTime date) {
 		
-		return toString (date, TestDateConst.DATE_FORMAT_UA_TIME);		
+		return toString (date, DATE_FORMAT_UA_TIME);		
 	}
 }
