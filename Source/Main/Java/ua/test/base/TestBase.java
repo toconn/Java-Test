@@ -298,6 +298,22 @@ public class TestBase {
 		printSorted (text1, texts);
 		print ();
 	}
+	
+	public static void printIndent (int indentCount, String text) {
+		
+		String indent;
+		
+		if (TestStringUtils.isNotEmpty (text)) {
+			
+			indent = TestStringUtils.indent (indentCount);
+			
+			text = text.replaceAll ("[\n]", "\n" + indent);
+			text = indent + text;
+		}
+		
+		print (text);
+	}
+
 
 	public static void printInline (String text) {
 		
