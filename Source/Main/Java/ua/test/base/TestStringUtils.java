@@ -712,6 +712,29 @@ public class TestStringUtils {
 		return stringBuilder.toString ();
 	}
 	
+	/**
+	 * Null safe, length safe function to return the left side of a string.
+	 * If less than length, returns full string.
+	 * 
+	 * @param text
+	 * @param length
+	 * @return
+	 */
+	public static String left (String text, int length, boolean includeEllipsis) {
+		
+		if (text != null && text.length () > length) {
+			if (includeEllipsis) {
+				return trim (text.substring (0, length)) + "...";
+			}
+			else {
+				return text.substring (0, length);
+			}
+		}
+		else {
+			return text;
+		}
+	}
+	
 	public static int length (String string) {
 		
 		if (string != null)
