@@ -25,7 +25,7 @@ public class AClassTestDataFactory {
 	// A_CLASS_2
 
 	public static final boolean A_CLASS_2_A_BOOLEAN = true;
-	public static final Date A_CLASS_2_A_DATE = new Date (1444144454790l);
+	public static final Date A_CLASS_2_A_DATE = new Date (1427318115000l); // 2015-03-25 17:15:15 (EST)
 	public static final BigDecimal A_CLASS_2_A_BIG_DECIMAL = new BigDecimal ("212.34");
 	public static final double A_CLASS_2_A_DOUBLE = 223.45d;
 	public static final float A_CLASS_2_A_FLOAT = 234.56f;
@@ -43,7 +43,7 @@ public class AClassTestDataFactory {
 		return item;
 	}
 
-	public static AClass newAClass_Empty() {
+	public static AClass newAClassEmptyDefaults() {
 
 		AClass item = new AClass.Builder()
 			.aBoolean (true)

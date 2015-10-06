@@ -162,6 +162,16 @@ public class TestBase {
 		print (e, className, methodName, comment);
 	}
 	
+	public static void printDoesntWork() {
+		
+		print ("*****************************************************************************");
+		print ("**  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  **");
+		print ("**  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  **");
+		print ("**  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  **");
+		print ("**  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  Doesn't Work  -  **");
+		print ("*****************************************************************************");
+	}
+	
 	public static void printDone() {
 		
 		print ();
@@ -298,6 +308,18 @@ public class TestBase {
 		printSorted (text1, texts);
 		print ();
 	}
+	
+	public static void printHasIssues() {
+		
+		print ("***********************************************************************************");
+		print ("**  -  Has Issues  -  Has Issues  -  Has Issues  -  Has Issues  - Has Issues  -  **");
+		print ("**  -  Has Issues  -  Has Issues  -  Has Issues  -  Has Issues  - Has Issues  -  **");
+		print ("**  -  Has Issues  -  Has Issues  -  Has Issues  -  Has Issues  - Has Issues  -  **");
+		print ("**  -  Has Issues  -  Has Issues  -  Has Issues  -  Has Issues  - Has Issues  -  **");
+		print ("***********************************************************************************");
+	}
+	
+
 	
 	public static void printIndent (int indentCount, String text) {
 		
