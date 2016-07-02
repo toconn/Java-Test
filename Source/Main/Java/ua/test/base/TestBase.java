@@ -45,12 +45,12 @@ public class TestBase {
 		print ("");
 	}
 	
-	public static void print (Exception e) {
+	public static void print (Throwable e) {
 
 		print (e, null);
 	}
 	
-	public static void print (Exception e, String description) {
+	public static void print (Throwable e, String description) {
 
 		print ("Exception",		e.getClass().getName());
 		
@@ -67,7 +67,7 @@ public class TestBase {
 		print ();
 	}
 
-	public static void print (Exception e, String className, String methodName, String comment) {
+	public static void print (Throwable e, String className, String methodName, String comment) {
 
 		print ("Exception",		e.getClass ().getName ());
 		print ("   Message",	e.getMessage ());
@@ -117,7 +117,7 @@ public class TestBase {
 		print (text1, Double.toString (number));
 	}
 
-	public static void print (String text1, Exception e) {
+	public static void print (String text1, Throwable e) {
 		
 		print (e, text1);
 	}
@@ -157,7 +157,7 @@ public class TestBase {
 		print (padString (text1, " ", getTextPaddingSize ()) + ": " + text2);
 	}
 	
-	public static void print (String className, String methodName, String comment, Exception e) {
+	public static void print (String className, String methodName, String comment, Throwable e) {
 		
 		print (e, className, methodName, comment);
 	}
@@ -195,19 +195,19 @@ public class TestBase {
 		print ();
 	}
 
-	public static void printDouble (Exception e) {
+	public static void printDouble (Throwable e) {
 
 		printDouble (e);		
 		print ();
 	}
 	
-	public static void printDouble (Exception e, String description) {
+	public static void printDouble (Throwable e, String description) {
 
 		printDouble (e, description);	
 		print ();
 	}
 
-	public static void printDouble (Exception e, String className, String methodName, String comment) {
+	public static void printDouble (Throwable e, String className, String methodName, String comment) {
 
 		printDouble (e, className, methodName, comment);
 		print ();
@@ -249,7 +249,7 @@ public class TestBase {
 		print ();
 	}
 	
-	public static void printDouble (String text1, Exception e) {
+	public static void printDouble (String text1, Throwable e) {
 		
 		print (e, text1);
 		print ();
@@ -297,7 +297,7 @@ public class TestBase {
 		print ();
 	}
 	
-	public static void printDouble (String className, String methodName, String comment, Exception e) {
+	public static void printDouble (String className, String methodName, String comment, Throwable e) {
 		
 		print (e, className, methodName, comment);
 		print ();
