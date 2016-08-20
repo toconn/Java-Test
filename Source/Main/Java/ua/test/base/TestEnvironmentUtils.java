@@ -37,6 +37,8 @@ public class TestEnvironmentUtils {
 	/**
 	 * Returns a string with the environment variables expanded.
 	 * 
+	 * Form: text %envVariable% text.
+	 * 
 	 * Null safe (returns empty list).
 	 * 
 	 * @param textList
