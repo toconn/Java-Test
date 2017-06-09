@@ -735,6 +735,18 @@ public class TestStringUtils {
 		}
 	}
 	
+	public static String leftPad (String text, String fillText, int totalLength) {
+		
+		if (text != null) {
+		
+			return expandString (fillText, totalLength - text.length()) + text;
+		}
+		else {
+			
+			return expandString (fillText, totalLength);
+		}
+	}
+	
 	public static int length (String string) {
 		
 		if (string != null)
@@ -792,7 +804,7 @@ public class TestStringUtils {
 			return expandString (fillChar, totalLength);
 		}
 	}
-	
+
 	
 	/**
 	 * 

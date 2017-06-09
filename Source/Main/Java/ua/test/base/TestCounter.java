@@ -31,4 +31,10 @@ public class TestCounter {
 		
 		return lastValue++;
 	}
+
+	@Override
+	public String toString () {
+
+		return "TestCounter [lastValue=" + lastValue + "]";
+	}
 }
