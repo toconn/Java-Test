@@ -1,5 +1,6 @@
 package ua.test.base;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -305,6 +306,21 @@ public class TestDate2Utils {
 			return null;
 		}
 	}
+	
+	public static LocalDateTime toDateTime (java.util.Date date) {
+		
+		if (date != null) {
+			return LocalDateTime.ofInstant (date.toInstant(), ZoneId.systemDefault());
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public static LocalDateTime toDateTime (long systemTimeMS) {
+		
+		return LocalDateTime.ofInstant (Instant.ofEpochMilli (systemTimeMS), ZoneId.systemDefault());
+	}	
 
 	/**
 	 * Null safe conversion from sql Timestamp to standard Date.
@@ -384,7 +400,6 @@ public class TestDate2Utils {
 
 		return date.format (DATE2_FORMATTER_ISO_DATE);
 	}
-	
 	
 	/**
 	 * Returns the date in date time format using the ISO format.

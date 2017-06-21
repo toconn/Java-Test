@@ -23,7 +23,7 @@ Options:
 */
 
 
-public class TestRunnerIntermittent implements Runnable {
+public class TestRunnerIntermittent implements TestRunner {
 
     public static class Builder {
 
@@ -75,8 +75,8 @@ public class TestRunnerIntermittent implements Runnable {
     private boolean debug;
 
     public TestRunnerIntermittent (TestCommand command, long commandMaxDelayMS, long commandMinDelayMS, long endTimeMS, String name, boolean debug) {
-
-        this.command = command;
+    	
+    	this.command = command;
         this.commandMaxDelayMS = commandMaxDelayMS;
         this.commandMinDelayMS = commandMinDelayMS;
         this.endTime = new TestTimeEnd (endTimeMS);
@@ -98,8 +98,21 @@ public class TestRunnerIntermittent implements Runnable {
         print ("Created.");
     }
 
+    @Override
+    public boolean isDebug() {
+        return debug;
+    }
+    
+    @Override
+    public String getName() {
+    	
+    	return this.name;
+    }
+
 	@Override
 	public void run() {
+		
+		print ("Starting...");
 		
 		while (endTime.hasNotEnded()) {
 			
@@ -107,6 +120,18 @@ public class TestRunnerIntermittent implements Runnable {
 			sleep();
 		}
 		
+		print ("Stopping...");
+		
+		command.stop();
+		
+		print ("Stopped.");
+		
+	}
+	
+	@Override
+	public void startThread() {
+		
+		TestRunnerUtils.startThread (this);
 	}
 	
 	private void print (String text) {

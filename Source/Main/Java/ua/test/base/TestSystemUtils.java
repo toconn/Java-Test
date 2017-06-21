@@ -36,4 +36,14 @@ public class TestSystemUtils extends TestBase {
 
 		}
 	}
+	
+	/**
+	 * Sleep until the system time matches the parameter.
+	 * 
+	 * @param systemTimeMS
+	 */
+	public static void sleepUntil (long systemTimeMS) {
+	
+		sleep (systemTimeMS - System.currentTimeMillis());
+	}
 }

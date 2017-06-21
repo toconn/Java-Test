@@ -26,7 +26,7 @@ Options:
  * Run a test continuously for a period of time.
  *
  */
-public class TestRunnerContinuous implements Runnable {
+public class TestRunnerContinuous implements TestRunner {
 	
     public static class Builder {
 
@@ -94,6 +94,16 @@ public class TestRunnerContinuous implements Runnable {
         print ("Created.");
     }
 
+    @Override
+    public boolean isDebug() {
+        return debug;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
 
 	@Override
 	public void run() {
@@ -106,15 +116,23 @@ public class TestRunnerContinuous implements Runnable {
 			sleep();
 		}
 		
-		print ("Ended.");
+		print ("Stopping...");
 		
+		command.stop();
+		
+		print ("Stopped.");
+		
+	}
+	
+	@Override
+	public void startThread() {
+		
+		TestRunnerUtils.startThread (this);
 	}
 	
 	private void print (String text) {
 		
-		if (debug) {
-			System.out.println (name + ": " + text);
-		}
+		TestRunnerUtils.print (this, text);
 	}
 	
 	private void sleep() {
