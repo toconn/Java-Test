@@ -319,6 +319,10 @@ public class TestBase {
 		print ("***********************************************************************************");
 	}
 	
+	public static void printHeader (String headerText) {
+		
+		printSectionHeader (headerText);
+	}
 
 	
 	public static void printIndent (int indentCount, String text) {
