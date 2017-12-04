@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class TestFileUtils {
 
@@ -199,11 +200,11 @@ public class TestFileUtils {
 
 		if (fileName != null) {
 
-			dummyClass = new TestFileUtils ();
-			fileURL = dummyClass.getClass ().getClassLoader ().getResource (fileName);
+			dummyClass = new TestFileUtils();
+			fileURL = dummyClass.getClass().getClassLoader().getResource (fileName);
 
 			if (fileURL != null) {
-				filePath = URLDecoder.decode (fileURL.getPath (), FILE_ENCODING_UTF8);
+				filePath = URLDecoder.decode (fileURL.getPath(), FILE_ENCODING_UTF8);
 			}
 
 			if (filePath != null) {
@@ -236,7 +237,7 @@ public class TestFileUtils {
 		// ///////////////////////////////
 
 		file = new File (path);
-		newPath = file.getCanonicalPath ();
+		newPath = file.getCanonicalPath();
 
 		return newPath;
 	}
@@ -475,4 +476,17 @@ public class TestFileUtils {
 
 		return TestStringUtils.isEqual (System.getProperty (JAVA_PROPERTIES_OS_NAME), WINDOWS_OS_NAME);
 	}
+	
+	
+	public static String readToString (String filePath) throws FileNotFoundException {
+		
+		String text;
+		
+		try (Scanner scanner = new Scanner (new File (filePath))) {
+			text = scanner.useDelimiter ("\\Z").next();
+		}
+		
+		return text;
+	}
+
 }
