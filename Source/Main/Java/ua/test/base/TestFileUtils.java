@@ -477,6 +477,11 @@ public class TestFileUtils {
 		return TestStringUtils.isEqual (System.getProperty (JAVA_PROPERTIES_OS_NAME), WINDOWS_OS_NAME);
 	}
 	
+	public static String join (String... subpaths) {
+		
+		return TestStringUtils.join(subpaths, File.separator);
+	}
+	
 	
 	public static String readToString (String filePath) throws FileNotFoundException {
 		

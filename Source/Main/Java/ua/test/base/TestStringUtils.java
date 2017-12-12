@@ -675,6 +675,43 @@ public class TestStringUtils {
 		return false;
 	}
 	
+	public static String join (String[] strings, String spacer) {
+		
+		//////////////////////////////////////////////////////////////////
+		// Declarations
+		//////////////////////////////////////////////////////////////////
+
+		StringBuilder	stringBuilder	= null;
+		
+		boolean			isFirst;
+
+
+		//////////////////////////////////////////////////////////////////
+		// Code
+		//////////////////////////////////////////////////////////////////
+
+		stringBuilder	= new StringBuilder ();
+		
+		isFirst = true;
+		
+		for (String string : strings) {
+			
+			if (spacer != null) {
+				if (isFirst) {
+					isFirst = false;
+				}
+				else {
+					stringBuilder.append (spacer);
+				}
+			}
+			
+			stringBuilder.append (string);
+		}
+		
+		
+		return stringBuilder.toString ();
+	}
+	
 	public static String join (Collection <String> strings, String spacer) {
 		
 		//////////////////////////////////////////////////////////////////
