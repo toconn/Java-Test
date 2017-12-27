@@ -107,6 +107,36 @@ public class TestFileUtils {
 			file.delete();
 		}
 	}
+	
+	public static void deleteDirectoryFiles (String dirPath) {
+		
+		deleteDirectoryFiles (new File (dirPath));
+	}
+	
+	/**
+	 * Delet the contents of a directory
+	 * @param filePath
+	 */
+	public static void deleteDirectoryFiles (File dirFile) {
+
+	    File[] filesArray = dirFile.listFiles();
+	    
+	    if (filesArray != null) {
+	    	
+	        for (File file: filesArray) {
+	        	
+	            if(file.isDirectory()) {
+	            	deleteDirectoryFiles(file);
+	            }
+	            else {
+	                file.delete();
+	            }
+
+	        }
+
+	    }
+
+	}
 
 
     /** 
