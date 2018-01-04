@@ -1,24 +1,37 @@
 package ua.test.utils.crud;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
+import java.util.TreeMap;
 
 import ua.test.base.TestCounter;
 import ua.test.base.TestItemNotFoundException;
 
-public class CrudInMemory <Item extends WithId> implements Crud <Item>  {
+public class CrudInMemory<Item extends WithId> implements Crud<Item>  {
 	
-	private static final int	INDEX_NOT_FOUND = -1;
-	
-	private List <Item>			items			= new ArrayList <Item> ();
+	private Map<Long, Item>		itemMap			= new TreeMap<>();
 	private TestCounter			nextIdCounter	= new TestCounter (true);
 	
 
 	@Override
+	public boolean contains (long id) {
+		
+		return itemMap.containsKey(id);
+	}
+	
+	
+	@Override
+	public boolean contains (Item item) {
+		
+		return itemMap.containsKey(item.getId());
+	}
+
+	
+	@Override
 	public Item create (Item item) {
 
 		item.setId (nextIdCounter.getNext());
-		items.add (item);
+		itemMap.put (item.getId(), item);
 		return item;
 	}
 
@@ -26,15 +39,11 @@ public class CrudInMemory <Item extends WithId> implements Crud <Item>  {
 	@Override
 	public void delete (long id) throws TestItemNotFoundException {
 		
-		int index;
-		
-		index = findIndex (id);
-
-		if (index != INDEX_NOT_FOUND) {
-			items.remove (index);
+		if (contains (id)) {
+			itemMap.remove (id);
 		}
 		else {
-			throw new TestItemNotFoundException ("Item not found.");
+			throw newItemNotFoundException (id);
 		}
 	}
 
@@ -46,74 +55,43 @@ public class CrudInMemory <Item extends WithId> implements Crud <Item>  {
 			delete (item.getId());
 		}
 	}
-
+	
 	
 	@Override
 	public Item retrieve (long id) throws TestItemNotFoundException {
 
-		int index;
-		Item item;
-		
-		index = findIndex (id);
-
-		if (index != INDEX_NOT_FOUND) {
-			item = items.get (index);
+		if (contains (id)) {
+			return itemMap.get (id);
 		}
 		else {
-			throw new TestItemNotFoundException ("Item not found.");
+			throw newItemNotFoundException (id);
 		}
-		
-		return item;
+
 	}
 
 	
 	@Override
-	public List <Item> retrieveAll() {
+	public Collection<Item> retrieveAll() {
 
-		return items;
+		return itemMap.values();
 	}
 
 	
 	@Override
 	public void update (Item item) throws TestItemNotFoundException {
 		
-		int index;
-		
-		index = findIndex (item);
-
-		if (index != INDEX_NOT_FOUND) {
-			items.set (index, item);
+		if (contains (item)) {
+			itemMap.put (item.getId(), item);
 		}
 		else {
-			throw new TestItemNotFoundException ("Item not found.");
+			throw newItemNotFoundException (item.getId());
 		}
 	}
 	
 	
-	private int findIndex (Item item) {
+	private TestItemNotFoundException newItemNotFoundException (long id) {
 		
-		if (item != null) {
-			return findIndex (item.getId());
-		}
-		else {
-			
-			return INDEX_NOT_FOUND;
-		}
+		return new TestItemNotFoundException ("Item not found (id " + id + ").");
 	}
 
-	
-	private int findIndex (long id) {
-		
-		int index = INDEX_NOT_FOUND;
-
-		for (int i = 0; i < items.size(); i++) {
-			
-			if (items.get(i).getId() == (int) id) {
-				index = i;
-				break;
-			}
-		}
-		
-		return index;
-	}
 }
