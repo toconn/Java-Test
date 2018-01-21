@@ -327,17 +327,12 @@ public class TestBase {
 	
 	public static void printIndent (int indentCount, String text) {
 		
-		String indent;
+		print (indent (indentCount, text));
+	}
+
+	public static void printIndent (int indentCount, String text1, String text2) {
 		
-		if (TestStringUtils.isNotEmpty (text)) {
-			
-			indent = TestStringUtils.indent (indentCount);
-			
-			text = text.replaceAll ("[\n]", "\n" + indent);
-			text = indent + text;
-		}
-		
-		print (text);
+		print (indent (indentCount, text1), text2);
 	}
 
 
@@ -375,9 +370,9 @@ public class TestBase {
 		//   Declarations
 		// ///////////////////////////////////////////////////////////////
 
-        Source				xmlInput			= null;
-        StringWriter		stringWriter		= null;
-        StreamResult		xmlOutput			= null;
+        Source				xmlInput				= null;
+        StringWriter			stringWriter			= null;
+        StreamResult			xmlOutput			= null;
         
         TransformerFactory	transformerFactory	= null;
         Transformer			transformer			= null;
@@ -476,6 +471,22 @@ public class TestBase {
 			
 			return "";
 		}
+	}
+	
+	private static String indent (int indentCount, String text) {
+		
+		String indent;
+			
+		indent = TestStringUtils.indent (indentCount);
+			
+		if (TestStringUtils.isNotEmpty (text)) {
+				
+			
+			text = text.replaceAll ("[\n]", "\n" + indent);
+			text = indent + text;
+		}
+		
+		return text;
 	}
 
 	private static String padString (String text, String fillText, int totalLength) {
