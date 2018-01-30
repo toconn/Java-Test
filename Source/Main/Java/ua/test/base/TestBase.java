@@ -481,7 +481,7 @@ public class TestBase {
 			
 		if (TestStringUtils.isNotEmpty (text)) {
 				
-			
+			// Indent at every newline:
 			text = text.replaceAll ("[\n]", "\n" + indent);
 			text = indent + text;
 		}
