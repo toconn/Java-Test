@@ -1,6 +1,6 @@
 package ua.test.runner;
 
-import ua.test.base.TestNumberUtils;
+import ua.test.base.TestRandomUtils;
 import ua.test.base.TestSystemUtils;
 import ua.test.base.TestTimeEnd;
 
@@ -143,7 +143,7 @@ public class TestRunnerIntermittent implements TestRunner {
 	
 	private void sleep() {
 		
-		long sleepTimeMS = commandMinDelayMS + TestNumberUtils.newRandomLong (this.commandMaxDelayMS - this.commandMinDelayMS);
+		long sleepTimeMS = commandMinDelayMS + TestRandomUtils.randomLong (this.commandMaxDelayMS - this.commandMinDelayMS);
 		
 		print ("Sleeping (" + sleepTimeMS + "ms).");
 	
