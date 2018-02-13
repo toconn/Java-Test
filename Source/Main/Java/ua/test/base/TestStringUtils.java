@@ -1340,6 +1340,31 @@ public class TestStringUtils {
 	
 	}
 	
+	/**
+	 * Converts a single word to title case.
+	 * 
+	 * Will not work if contains multiple words.
+	 * 
+	 * @param word
+	 * @return
+	 */
+	public static String toTitleCase (String word) {
+		
+		int length;
+		
+		length = length (word);
+		
+		if (length == 1) {
+			word = word.toUpperCase();
+		}
+		else if (length > 1) {
+			word =  word.substring (0, 1).toUpperCase() + word.substring (1).toLowerCase();
+		}
+		// Else
+			// Zero length. Return as is.
+		
+		return word;
+	}
 	
 	/**
 	 * 
