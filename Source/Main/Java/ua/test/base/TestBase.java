@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
@@ -34,19 +35,21 @@ public class TestBase {
 	private static int		COLUMN_2_START_POSITION	= 24;
 	private static String	BORDER_CHARACTER	= "*";
 
+	private static int		column2StartPosition = COLUMN_2_START_POSITION;
+	
+	public static int getColumn2StartPosition() {
+		return column2StartPosition;
+	}
 	
 	public static int getTextPaddingSize () {
-
-		return COLUMN_2_START_POSITION;
+		return getColumn2StartPosition();
 	}
 	
 	public static void print () {
-
 		print ("");
 	}
 	
 	public static void print (Throwable e) {
-
 		print (e, null);
 	}
 	
@@ -83,82 +86,66 @@ public class TestBase {
 	}
 
 	public static void print (Object obj) {
-
 		System.out.println (obj);
 	}
 	
 	public static void print (Collection <String> texts) {
-		
 		print (TestStringUtils.join (texts, ", "));
 	}
 
 	public static void print (String text) {
-
 		System.out.println (text);
 	}
 
 	public static void print (String text1, boolean boolValue) {
-
 		print (text1, Boolean.toString (boolValue));
 	}
 	
 	public static void print (String text1, Collection <String> texts) {
-		
 		print (text1, TestStringUtils.join (texts, ", "));
 	}
 
 	public static void print (String text1, Date date) {
-
 		print (text1, TestDateUtils.toTimestampString (date));
 	}
 
 	public static void print (String text1, double number) {
-
 		print (text1, Double.toString (number));
 	}
 
 	public static void print (String text1, Throwable e) {
-		
 		print (e, text1);
 	}
 
 	public static void print (String text1, float number) {
-
 		print (text1, Float.toString (number));
 	}
 
 	public static void print (String text1, int number) {
-
 		print (text1, Integer.toString (number));
 	}
 
 	public static void print (String text1, LocalDate date) {
-
 		print (text1, TestDate2Utils.toTimestampString (date));
 	}
 
 	public static void print (String text1, LocalDateTime dateTime) {
-
 		print (text1, TestDate2Utils.toTimestampString (dateTime));
 	}
 
 	public static void print (String text1, LocalTime time) {
-
 		print (text1, TestDate2Utils.toTimestampString (time));
 	}
 
 	public static void print (String text1, long number) {
-
 		print (text1, Long.toString (number));
 	}
 
 	public static void print (String text1, String text2) {
-
-		print (padString (text1, " ", getTextPaddingSize ()) + ": " + text2);
+		print (padString (text1, " ", getColumn2StartPosition()) + ": " + text2);
 	}
 	
 	public static void print (String className, String methodName, String comment, Throwable e) {
-		
 		print (e, className, methodName, comment);
 	}
 	
@@ -190,121 +177,101 @@ public class TestBase {
 	}
 
 	public static void printDouble () {
-		
 		print ();
 		print ();
 	}
 
 	public static void printDouble (Throwable e) {
-
-		printDouble (e);		
+		print (e);		
 		print ();
 	}
 	
 	public static void printDouble (Throwable e, String description) {
-
-		printDouble (e, description);	
+		print (e, description);	
 		print ();
 	}
 
 	public static void printDouble (Throwable e, String className, String methodName, String comment) {
-
-		printDouble (e, className, methodName, comment);
+		print (e, className, methodName, comment);
 		print ();
 	}
 
 	public static void printDouble (Collection <String> texts) {
-		
 		print (texts);
 		print ();
 	}
 
 	public static void printDouble (String text) {
-		
 		print (text);
 		print ();
 	}
 
 	public static void printDouble (String text1, boolean boolValue) {
-		
 		print (text1, boolValue);
 		print ();
 	}
 	
 	public static void printDouble (String text1, Collection <String> texts) {
-		
 		print (text1, texts);
 		print ();
 	}
 
 	public static void printDouble (String text1, Date date) {
-		
 		print (text1, date);
 		print ();
 	}
 	
 	public static void printDouble (String text1, Double number) {
-		
 		print (text1, number);
 		print ();
 	}
 	
 	public static void printDouble (String text1, Throwable e) {
-		
 		print (e, text1);
 		print ();
 	}
 
 	public static void printDouble (String text1, float number) {
-		
 		print (text1, number);
 		print ();
 	}
 	
 	public static void printDouble (String text1, int number) {
-		
 		print (text1, number);
 		print ();
 	}
 	
 	public static void printDouble (String text1, LocalDate date) {
-		
 		print (text1, date);
 		print ();
 	}
 	
 	public static void printDouble (String text1, LocalDateTime dateTime) {
-		
 		print (text1, dateTime);
 		print ();
 	}
 	
 	public static void printDouble (String text1, LocalTime time) {
-		
 		print (text1, time);
 		print ();
 	}
 	
 	public static void printDouble (String text1, long number) {
-		
 		print (text1, number);
 		print ();
 	}
 	
 	public static void printDouble (String text1, String text2) {
-		
 		print (text1, text2);
 		print ();
 	}
 	
 	public static void printDouble (String className, String methodName, String comment, Throwable e) {
-		
 		print (e, className, methodName, comment);
 		print ();
 	}
 
 	public static void printDoubleSorted (String text1, Collection <String> texts) {
-		
 		printSorted (text1, texts);
 		print ();
 	}
@@ -320,24 +287,20 @@ public class TestBase {
 	}
 	
 	public static void printHeader (String headerText) {
-		
 		printSectionHeader (headerText);
 	}
 
 	
 	public static void printIndent (int indentCount, String text) {
-		
 		print (indent (indentCount, text));
 	}
 
 	public static void printIndent (int indentCount, String text1, String text2) {
-		
 		print (indent (indentCount, text1), text2);
 	}
 
 
 	public static void printInline (String text) {
-		
 		System.out.print (text);
 	}
 	
@@ -349,7 +312,6 @@ public class TestBase {
 	}
 	
 	public static void printSorted (String text1, Collection <String> texts) {
-		
 		print (text1, TestStringUtils.join (TestCollectionUtils.asSortedList (texts), ", "));
 	}
 	
@@ -403,10 +365,13 @@ public class TestBase {
 	    	print (e);
 	    }
 	}
+	
+	public static void setColumn2StartPosition (int column2StartPosition) {
+		TestBase.column2StartPosition = column2StartPosition;
+	}
 
 	public static void setTextPaddingSize (int textPaddingSize) {
-		
-		COLUMN_2_START_POSITION = textPaddingSize;
+		setColumn2StartPosition (textPaddingSize);
 	}
 	
 	public static void sleep (int seepTimeMs) {
@@ -420,7 +385,6 @@ public class TestBase {
 	}
 	
 	public static void sleepSecs (int sleepTimeSecs) {
-		
 		sleep (sleepTimeSecs * 1000);
 	}	
 	
