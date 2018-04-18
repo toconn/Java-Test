@@ -446,26 +446,6 @@ public class TestStringUtils {
 		return message;
 	}
 	
-	
-	public static int getMaxStringLength (Collection <String> collection) {
-		
-		int maxLength = 0;
-		
-		if (collection != null) {
-			
-			for (String itemString: collection) {
-				
-				if (itemString.length() > maxLength) {
-					
-					maxLength = itemString.length ();
-				}
-			}
-		}
-		
-		return maxLength;
-	}
-	
-	
 	/**
 	 * Creates a padding string large enough to fill the pad length.
 	 * 
@@ -808,6 +788,37 @@ public class TestStringUtils {
 			return 0;
 	}
 	
+	public static int maxLength (String[] strings) {
+		
+		int maxLength = 0;
+		
+		if (TestCollectionUtils.isNotEmpty (strings)) {
+			for (String string : strings) {
+				if (length (string) > maxLength) {
+					maxLength = length (string);
+				}
+			}
+		}
+		
+		return maxLength;
+	}
+	
+	public static int maxLength (Collection <String> strings) {
+		
+		int maxLength = 0;
+		
+		if (TestCollectionUtils.isNotEmpty (strings)) {
+			
+			for (String itemString: strings) {
+				if (length (itemString) > maxLength) {
+					maxLength = itemString.length();
+				}
+			}
+		}
+		
+		return maxLength;
+	}
+	
 	/**
 	 * Returns the word that would be next in alphabetical terms.
 	 * 
@@ -828,6 +839,10 @@ public class TestStringUtils {
 	    }
 		
 		return nextWord;
+	}
+	
+	public static String pad (String text, int totalLength) {
+		return pad (text, ' ', totalLength);
 	}
 	
 	/**

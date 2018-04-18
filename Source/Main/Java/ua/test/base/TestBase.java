@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Map;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
@@ -295,6 +294,22 @@ public class TestBase {
 		print (indent (indentCount, text));
 	}
 
+	public static void printIndent (int indentCount, String text1, boolean value) {
+		printIndent (indentCount, text1, Boolean.toString (value));
+	}
+
+	public static void printIndent (int indentCount, String text1, int value) {
+		printIndent (indentCount, text1, Integer.toString (value));
+	}
+	
+	public static void printIndent (int indentCount, String text, Object value) {
+		printIndent (indentCount, text, toString (value));
+	}
+
+	public static void printIndent (int indentCount, String text1, long value) {
+		printIndent (indentCount, text1, Long.toString (value));
+	}
+
 	public static void printIndent (int indentCount, String text1, String text2) {
 		print (indent (indentCount, text1), text2);
 	}
@@ -462,6 +477,15 @@ public class TestBase {
 		else {
 			
 			return expandString (fillText, totalLength);
+		}
+	}
+	
+	private static String toString (Object object) {
+		if (object != null) {
+			return object.toString();
+		}
+		else {
+			return "NULL";
 		}
 	}
 }
