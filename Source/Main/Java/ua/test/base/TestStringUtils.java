@@ -675,7 +675,20 @@ public class TestStringUtils {
 		return false;
 	}
 	
-	public static String join (String[] strings, String spacer) {
+	public static String join (String string1, String string2, String separator) {
+		
+		if (string1 == null) {
+			return string2;
+		}
+		else if (string2 == null) {
+			return string1;
+		}
+		else {
+			return string1 + separator + string2;
+		}
+	}
+	
+	public static String join (String[] strings, String separator) {
 		
 		//////////////////////////////////////////////////////////////////
 		// Declarations
@@ -696,12 +709,12 @@ public class TestStringUtils {
 		
 		for (String string : strings) {
 			
-			if (spacer != null) {
+			if (separator != null) {
 				if (isFirst) {
 					isFirst = false;
 				}
 				else {
-					stringBuilder.append (spacer);
+					stringBuilder.append (separator);
 				}
 			}
 			
@@ -712,7 +725,7 @@ public class TestStringUtils {
 		return stringBuilder.toString ();
 	}
 	
-	public static String join (Collection <String> strings, String spacer) {
+	public static String join (Collection <String> strings, String separator) {
 		
 		//////////////////////////////////////////////////////////////////
 		// Declarations
@@ -733,12 +746,12 @@ public class TestStringUtils {
 		
 		for (String string : strings) {
 			
-			if (spacer != null) {
+			if (separator != null) {
 				if (isFirst) {
 					isFirst = false;
 				}
 				else {
-					stringBuilder.append (spacer);
+					stringBuilder.append (separator);
 				}
 			}
 			
